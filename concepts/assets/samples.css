@@ -42,6 +42,19 @@ a.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,20,40,.11
 .cta .btn{background:var(--accent2)}
 .note{max-width:1100px;margin:0 auto;padding:0 20px 24px;font-size:14px;opacity:.75}
 footer{border-top:1px solid rgba(0,0,0,.08);text-align:center;padding:26px 20px;font-size:13px;opacity:.72}
+.niche{max-width:1100px;margin:0 auto;padding:0 20px 62px}
+.niche h2{margin-bottom:6px}
+.niche-intro{max-width:70ch;opacity:.78;margin:0 0 22px}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.niche-grid,.showcase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.niche-item{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:20px}
+.niche-item h3,.showcase-card h3{margin:0 0 6px;font-size:1.02rem}
+.niche-item p,.showcase-card p{margin:0;font-size:.92rem;opacity:.76}
+.showcase-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:16px;overflow:hidden}
+.showcase-art{height:150px;background:linear-gradient(135deg,var(--accent),var(--accent2));position:relative;opacity:.9}
+.showcase-art span{position:absolute;left:12px;bottom:10px;color:#fff;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.showcase-card .body{padding:18px}
+.review-note{border-left:3px solid var(--accent);padding:10px 14px;background:rgba(0,0,0,.035);border-radius:0 10px 10px 0;margin-bottom:20px;font-size:14px;max-width:70ch}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
