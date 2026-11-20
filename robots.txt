@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yash2006323.github.io/lux-and-Logic.github.io/sitemap.xml
