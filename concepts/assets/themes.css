@@ -1,0 +1,207 @@
+/* Lux and Logic — concept theme layer v0.2
+   One accessible base (samples.css), ten distinct visual systems.
+   Every effect is decorative: labels, semantics and reduced-motion stay intact. */
+
+:root{
+  --font-display:inherit;
+  --font-body:inherit;
+  --surface:#ffffff;
+  --line:rgba(0,0,0,.10);
+  --muted:rgba(22,24,29,.72);
+  --radius:18px;
+  --shadow:0 8px 30px rgba(20,20,40,.06);
+  --hero-glow:radial-gradient(circle at 85% 10%,rgba(255,255,255,.55),transparent 45%);
+}
+
+body{
+  font-family:var(--font-body);
+  background-color:var(--bg);
+  background-image:var(--hero-glow);
+  background-repeat:no-repeat;
+  background-size:100% 720px;
+}
+h1,h2,h3,.brand{font-family:var(--font-display)}
+.eyebrow,.tag,.num{font-family:var(--font-body)}
+.badge{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.09);border-radius:999px;letter-spacing:.04em}
+.card,.niche-item,.showcase-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card h3,.niche-item h3,.showcase-card h3{font-family:var(--font-display)}
+.lede,.niche-intro,.card p,.niche-item p,.showcase-card p,.cta p{color:var(--muted)}
+.btn{border-radius:var(--radius)}
+.strip{background:var(--accent);color:var(--bg);transform:none}
+.cta{border-radius:calc(var(--radius) + 8px)}
+
+/* Unique illustrations — inline SVG, no external images or stock licences */
+.hero-art{position:absolute;right:1%;top:52px;width:min(30vw,300px);aspect-ratio:1;margin:0;pointer-events:none;z-index:0;opacity:.92}
+.hero-art svg{width:100%;height:100%;overflow:visible}
+.hero-mark{display:none}
+.hero .eyebrow,.hero h1,.hero .lede,.hero .actions{position:relative;z-index:1}
+.art-line{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.art-soft{fill:var(--accent);opacity:.16}
+.art-solid{fill:var(--accent)}
+.art-second{fill:var(--accent2)}
+.art-spin{animation:llArtSpin 20s linear infinite;transform-origin:center}
+.art-float{animation:llArtFloat 6s ease-in-out infinite}
+.art-pulse{animation:llArtPulse 3.2s ease-in-out infinite;transform-origin:center}
+.art-steam{animation:llArtSteam 3.2s ease-in-out infinite}
+.art-steam:nth-of-type(2){animation-delay:-1.1s}
+.art-steam:nth-of-type(3){animation-delay:-2.2s}
+.art-draw{stroke-dasharray:260;animation:llArtDraw 5s ease-in-out infinite alternate}
+.art-sway{animation:llArtSway 5s ease-in-out infinite;transform-origin:top center}
+@keyframes llArtSpin{to{transform:rotate(360deg)}}
+@keyframes llArtFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes llArtPulse{0%,100%{opacity:.28;transform:scale(.86)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes llArtSteam{0%{opacity:0;transform:translateY(10px)}45%{opacity:.75}100%{opacity:0;transform:translateY(-16px)}}
+@keyframes llArtDraw{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
+@keyframes llArtSway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+
+/* Next-concept link makes page-to-page motion visible and useful */
+.nextlink{max-width:1100px;margin:0 auto 70px;padding:0 20px;text-align:right}
+.nextlink a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:4px}
+.nextlink a:hover{opacity:.75}
+.nextlink span{font-family:var(--font-body);font-size:1.3rem}
+
+/* Cross-document view transitions: progressive enhancement, off under reduced motion */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  .topbar{view-transition-name:ll-header}
+  .hero{view-transition-name:ll-hero}
+  .cta{view-transition-name:ll-cta}
+  ::view-transition-old(root){animation:llVTOld .22s ease both}
+  ::view-transition-new(root){animation:llVTNew .36s cubic-bezier(.2,.8,.2,1) both}
+  ::view-transition-old(ll-hero){animation:llVTHeroOld .28s ease both}
+  ::view-transition-new(ll-hero){animation:llVTHeroNew .42s cubic-bezier(.2,.8,.2,1) both}
+}
+@keyframes llVTOld{to{opacity:0;transform:translateY(-6px)}}
+@keyframes llVTNew{from{opacity:0;transform:translateY(8px)}}
+@keyframes llVTHeroOld{to{opacity:0;transform:translateX(-14px) scale(.985)}}
+@keyframes llVTHeroNew{from{opacity:0;transform:translateX(16px) scale(1.015)}}
+
+/* 01 — Restaurant: candlelit editorial, serif menu cards */
+body[data-theme="restaurant"]{
+  --font-display:"Playfair Display",Georgia,serif;--font-body:"Manrope",system-ui,sans-serif;
+  --bg:#14100f;--ink:#f8efe3;--muted:rgba(248,239,227,.72);--surface:#211b18;
+  --line:rgba(248,239,227,.16);--accent:#e3ad5c;--accent2:#f2d7a2;--radius:3px;
+  --shadow:0 18px 40px rgba(0,0,0,.24);--hero-glow:radial-gradient(circle at 88% 6%,rgba(227,173,92,.18),transparent 46%);
+}
+body[data-theme="restaurant"] .eyebrow,body[data-theme="restaurant"] .tag{letter-spacing:.28em;font-size:11px}
+body[data-theme="restaurant"] .btn{text-transform:uppercase;letter-spacing:.14em;font-size:12px}
+body[data-theme="restaurant"] .niche-item{border-left:2px solid var(--accent)}
+body[data-theme="restaurant"] h1{font-style:italic}
+
+/* 02 — Salon: soft mirror-glass minimal, fashion serif */
+body[data-theme="salon"]{
+  --font-display:"Cormorant Garamond",Georgia,serif;--font-body:"Jost",system-ui,sans-serif;
+  --bg:#fbf2f5;--ink:#3d1f2c;--muted:rgba(61,31,44,.68);--surface:#fffafc;
+  --line:rgba(157,23,77,.18);--accent:#a4255c;--accent2:#e0a0bd;--radius:28px;
+  --shadow:0 18px 44px rgba(157,23,77,.08);--hero-glow:radial-gradient(circle at 82% 12%,rgba(224,160,189,.3),transparent 48%);
+}
+body[data-theme="salon"] .card,body[data-theme="salon"] .niche-item{border-style:dashed}
+body[data-theme="salon"] h1{font-weight:500;letter-spacing:-.02em}
+body[data-theme="salon"] .tag{letter-spacing:.3em;color:var(--accent2)}
+
+/* 03 — Real estate: architectural grid, confident grotesk */
+body[data-theme="realestate"]{
+  --font-display:"Space Grotesk",system-ui,sans-serif;--font-body:"DM Sans",system-ui,sans-serif;
+  --bg:#eef2f7;--ink:#13233d;--muted:rgba(19,35,61,.7);--surface:#ffffff;
+  --line:rgba(19,35,61,.14);--accent:#1c5fd6;--accent2:#e07a4f;--radius:2px;
+  --shadow:0 12px 32px rgba(19,35,61,.09);--hero-glow:linear-gradient(115deg,rgba(28,95,214,.08),transparent 45%);
+}
+body[data-theme="realestate"] .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(19,35,61,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(19,35,61,.05) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(90deg,transparent,#000 55%)}
+body[data-theme="realestate"] .card{border-top:5px solid var(--accent2)}
+body[data-theme="realestate"] .showcase-art{background:linear-gradient(135deg,var(--accent),var(--accent2))}
+
+/* 04 — Café: warm paper, rounded coffee-shop friendliness */
+body[data-theme="cafe"]{
+  --font-display:"Fraunces",Georgia,serif;--font-body:"Nunito",system-ui,sans-serif;
+  --bg:#fdf5e8;--ink:#3d2415;--muted:rgba(61,36,21,.7);--surface:#fffdf8;
+  --line:rgba(154,52,18,.16);--accent:#a4471d;--accent2:#e39b4a;--radius:26px;
+  --shadow:0 14px 34px rgba(154,52,18,.09);--hero-glow:radial-gradient(circle at 86% 10%,rgba(227,155,74,.28),transparent 48%);
+}
+body[data-theme="cafe"] h1{font-weight:600;line-height:1.03}
+body[data-theme="cafe"] .strip{border-radius:0 0 22px 22px}
+body[data-theme="cafe"] .niche-item{background-image:radial-gradient(circle at 100% 0,rgba(227,155,74,.12),transparent 45%)}
+
+/* 05 — Bakery: butter-yellow playfulness, chunky type */
+body[data-theme="bakery"]{
+  --font-display:"DM Serif Display",Georgia,serif;--font-body:"Fredoka",system-ui,sans-serif;
+  --bg:#fffae2;--ink:#4a3210;--muted:rgba(74,50,16,.7);--surface:#fffef6;
+  --line:rgba(180,83,9,.18);--accent:#b85c10;--accent2:#f2b32e;--radius:22px;
+  --shadow:0 12px 0 rgba(180,83,9,.08);--hero-glow:radial-gradient(circle at 88% 8%,rgba(242,179,46,.35),transparent 46%);
+}
+body[data-theme="bakery"] .btn{box-shadow:0 5px 0 rgba(180,83,9,.22)}
+body[data-theme="bakery"] .card{transform:rotate(-.6deg)}
+body[data-theme="bakery"] .card:nth-child(even){transform:rotate(.6deg)}
+body[data-theme="bakery"] .tag{color:var(--accent2)}
+
+/* 06 — Fitness: high-contrast, condensed, kinetic */
+body[data-theme="fitness"]{
+  --font-display:"Archivo Black",Impact,sans-serif;--font-body:"Barlow Condensed",system-ui,sans-serif;
+  --bg:#0c0d0f;--ink:#f4f5f2;--muted:rgba(244,245,242,.7);--surface:#181b1e;
+  --line:rgba(214,255,92,.28);--accent:#d6ff5c;--accent2:#ff5c7a;--radius:0px;
+  --shadow:6px 6px 0 rgba(214,255,92,.14);--hero-glow:linear-gradient(120deg,rgba(214,255,92,.1),transparent 40%);
+}
+body[data-theme="fitness"] h1{text-transform:uppercase;letter-spacing:-.02em}
+body[data-theme="fitness"] .eyebrow,body[data-theme="fitness"] .tag{letter-spacing:.24em}
+body[data-theme="fitness"] .strip{transform:skewY(-1.2deg)}
+body[data-theme="fitness"] .card{border-left:4px solid var(--accent2)}
+
+/* 07 — Dental: clinical calm, soft geometry */
+body[data-theme="dental"]{
+  --font-display:"Lora",Georgia,serif;--font-body:"Plus Jakarta Sans",system-ui,sans-serif;
+  --bg:#f2fbfa;--ink:#123c3a;--muted:rgba(18,60,58,.68);--surface:#ffffff;
+  --line:rgba(15,118,110,.16);--accent:#0f766e;--accent2:#5eead4;--radius:30px;
+  --shadow:0 16px 40px rgba(15,118,110,.09);--hero-glow:radial-gradient(circle at 86% 8%,rgba(94,234,212,.28),transparent 48%);
+}
+body[data-theme="dental"] .card{padding:30px}
+body[data-theme="dental"] .btn{border-radius:999px}
+body[data-theme="dental"] .niche-item{background:linear-gradient(160deg,#fff,rgba(94,234,212,.08))}
+
+/* 08 — Home services: trade-ticket, bold utility */
+body[data-theme="homeservices"]{
+  --font-display:"Archivo Black",Impact,sans-serif;--font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --bg:#fff6e8;--ink:#2c1a08;--muted:rgba(44,26,8,.7);--surface:#fffdf7;
+  --line:rgba(194,65,12,.22);--accent:#b8460b;--accent2:#f08a24;--radius:8px;
+  --shadow:0 10px 26px rgba(194,65,12,.12);--hero-glow:linear-gradient(90deg,rgba(240,138,36,.14),transparent 46%);
+}
+body[data-theme="homeservices"] h1{text-transform:uppercase}
+body[data-theme="homeservices"] .card{background-image:repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(194,65,12,.035) 14px,rgba(194,65,12,.035) 15px)}
+body[data-theme="homeservices"] .num{color:var(--accent2)}
+
+/* 09 — Photography: gallery contrast, fine serif captions */
+body[data-theme="photography"]{
+  --font-display:"Bodoni Moda",Georgia,serif;--font-body:"Inter",system-ui,sans-serif;
+  --bg:#111114;--ink:#f5f2ec;--muted:rgba(245,242,236,.72);--surface:#1b1b1f;
+  --line:rgba(245,242,236,.16);--accent:#c8a2ff;--accent2:#f5f2ec;--radius:1px;
+  --shadow:0 20px 50px rgba(0,0,0,.32);--hero-glow:radial-gradient(circle at 88% 10%,rgba(200,162,255,.14),transparent 45%);
+}
+body[data-theme="photography"] h1{font-weight:600;font-style:italic}
+body[data-theme="photography"] .card,body[data-theme="photography"] .niche-item{padding:28px;border-width:1px}
+body[data-theme="photography"] .showcase-art{filter:grayscale(1) contrast(1.15)}
+body[data-theme="photography"] .tag{color:var(--accent)}
+
+/* 10 — Boutique: plum and sage editorial, thin rules */
+body[data-theme="boutique"]{
+  --font-display:"Prata",Georgia,serif;--font-body:"Karla",system-ui,sans-serif;
+  --bg:#f6f1ef;--ink:#3b2440;--muted:rgba(59,36,64,.7);--surface:#fffdfd;
+  --line:rgba(67,56,202,.14);--accent:#5b3a66;--accent2:#9bb59c;--radius:12px;
+  --shadow:0 14px 38px rgba(91,58,102,.09);--hero-glow:radial-gradient(circle at 84% 10%,rgba(155,181,156,.35),transparent 48%);
+}
+body[data-theme="boutique"] .hero::before{content:"";position:absolute;left:20px;top:36px;bottom:36px;width:1px;background:var(--accent2);opacity:.5}
+body[data-theme="boutique"] .card{border-top:3px solid var(--accent2)}
+body[data-theme="boutique"] .tag{letter-spacing:.24em;color:var(--accent2)}
+
+/* Sample index gets the same navigation motion without a theme palette */
+body[data-sample-index] .topbar{view-transition-name:ll-header}
+body[data-sample-index] .hero{view-transition-name:ll-hero}
+
+@media (max-width:760px){
+  .hero-art{width:190px;right:-45px;top:12px;opacity:.18}
+  .nextlink{text-align:left}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-art{opacity:.4}
+  .art-line,.art-draw{stroke-dashoffset:0}
+  ::view-transition-old(root),::view-transition-new(root),
+  ::view-transition-old(ll-hero),::view-transition-new(ll-hero){animation:none!important}
+}
